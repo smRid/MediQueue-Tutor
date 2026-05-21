@@ -114,6 +114,76 @@ MediQueue-Tutor/
 
 ---
 
+## 🔐 Environment Variables
+
+Create a `.env` file in the project root and configure these values:
+
+```env
+# MongoDB Atlas
+MONGODB_URI=your_mongodb_connection_string
+MONGODB_DB=mediqueue
+
+# App URLs
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+NEXT_PUBLIC_API_BASE_URL=http://localhost:5000
+
+# Better Auth
+BETTER_AUTH_SECRET=your_random_secret
+BETTER_AUTH_URL=http://localhost:3000
+BETTER_AUTH_API_KEY=your_better_auth_api_key
+
+# Google OAuth
+GOOGLE_CLIENT_ID=your_google_oauth_client_id
+GOOGLE_CLIENT_SECRET=your_google_oauth_client_secret
+
+# JWT
+JWT_SECRET=your_jwt_secret
+```
+
+For production, set:
+
+```env
+BETTER_AUTH_URL=https://mediqueuetutor.vercel.app
+NEXT_PUBLIC_APP_URL=https://mediqueuetutor.vercel.app
+NEXT_PUBLIC_API_BASE_URL=https://mediqueuetutorserver.vercel.app
+```
+
+---
+
+## 🚀 Getting Started
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
+
+```bash
+npm run dev
+```
+
+Open the app:
+
+```text
+http://localhost:3000
+```
+
+Build for production:
+
+```bash
+npm run build
+```
+
+Run the production server:
+
+```bash
+npm start
+```
+
+---
+
 ## 🌐 Deployment
 
 The application is deployed on **Vercel**:
@@ -121,6 +191,16 @@ The application is deployed on **Vercel**:
 **Frontend Live URL:** [https://mediqueuetutor.vercel.app/](https://mediqueuetutor.vercel.app/)
 **Backend Live URL:** [https://mediqueuetutorserver.vercel.app/](https://mediqueuetutorserver.vercel.app/)
 **Backend Repository:** [https://github.com/smRid/MediQueue-Tutor-Server](https://github.com/smRid/MediQueue-Tutor-Server)
+
+For deployment:
+
+1. Add all production environment variables in Vercel project settings.
+2. Set `BETTER_AUTH_URL` to `https://mediqueuetutor.vercel.app`.
+3. Set `NEXT_PUBLIC_APP_URL` to `https://mediqueuetutor.vercel.app`.
+4. Set `NEXT_PUBLIC_API_BASE_URL` to `https://mediqueuetutorserver.vercel.app`.
+5. Configure Google OAuth authorized origins and redirect URLs for the production domain.
+6. Allow Vercel/production access in MongoDB Atlas Network Access.
+7. Redeploy after changing environment variables.
 
 ---
 
