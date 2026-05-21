@@ -79,23 +79,25 @@ export default function Navbar() {
       }`}
     >
       <nav className="container-x flex h-16 items-center justify-between">
-        <Link href="/" className="group flex items-center gap-2">
-          <span className="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-violet-600 via-fuchsia-500 to-cyan-400 shadow-lg shadow-violet-500/20 transition-transform duration-300 group-hover:scale-105">
-            <span className="grid h-9 w-9 place-items-center rounded-xl bg-white/15">
-              <BookOpen className="h-5 w-5 text-white" strokeWidth={2.6} />
+        <div className="flex flex-1 items-center justify-start">
+          <Link href="/" className="group flex items-center gap-2">
+            <span className="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-violet-600 via-fuchsia-500 to-cyan-400 shadow-lg shadow-violet-500/20 transition-transform duration-300 group-hover:scale-105">
+              <span className="grid h-9 w-9 place-items-center rounded-xl bg-white/15">
+                <BookOpen className="h-5 w-5 text-white" strokeWidth={2.6} />
+              </span>
             </span>
-          </span>
-          <span className="leading-tight">
-            <span className="block font-display text-xl font-extrabold tracking-tight text-foreground">
-              Medi<span className="gradient-text">Queue</span>
+            <span className="leading-tight">
+              <span className="block font-display text-xl font-extrabold tracking-tight text-foreground">
+                Medi<span className="gradient-text">Queue</span>
+              </span>
+              <span className="block text-[10px] uppercase tracking-[0.28em] text-violet-600 dark:text-violet-300">
+                Tutor Booking
+              </span>
             </span>
-            <span className="block text-[10px] uppercase tracking-[0.28em] text-violet-600 dark:text-violet-300">
-              Tutor Booking
-            </span>
-          </span>
-        </Link>
+          </Link>
+        </div>
 
-        <ul className="hidden flex-1 justify-center items-center gap-1 lg:flex">
+        <ul className="hidden flex-none items-center justify-center gap-1 lg:flex">
           {allNav.map((item) => (
             <li key={item.href}>
               <Link
@@ -117,7 +119,7 @@ export default function Navbar() {
         </ul>
 
         {/* Desktop Right */}
-        <div className="hidden items-center gap-2 lg:flex">
+        <div className="hidden flex-1 items-center justify-end gap-2 lg:flex">
           {/* Theme Toggle */}
           <button
             type="button"
@@ -204,7 +206,7 @@ export default function Navbar() {
         </div>
 
         {/* Mobile buttons */}
-        <div className="flex items-center gap-2 lg:hidden">
+        <div className="flex flex-1 items-center justify-end gap-2 lg:hidden">
           <button
             type="button"
             onClick={toggleTheme}
