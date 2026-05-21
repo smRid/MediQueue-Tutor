@@ -1,19 +1,6 @@
 "use client";
 
-import {
-  BookOpen,
-  CalendarCheck,
-  GraduationCap,
-  Home,
-  LogOut,
-  Menu,
-  Moon,
-  PlusCircle,
-  Sun,
-  User,
-  Users,
-  X,
-} from "lucide-react";
+import { BookOpen, CalendarCheck, GraduationCap, Home, LogOut, Menu, Moon, PlusCircle, Sun, User, Users, X, } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -71,11 +58,10 @@ export default function Navbar() {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "border-b border-white/40 bg-background/70 shadow-sm backdrop-blur-xl dark:border-white/10"
-          : "bg-transparent"
-      }`}
+      className={`sticky top-0 z-50 transition-all duration-300 ${scrolled
+        ? "border-b border-white/40 bg-background/70 shadow-sm backdrop-blur-xl dark:border-white/10"
+        : "bg-transparent"
+        }`}
     >
       <nav className="container-x flex h-16 items-center justify-between">
         <Link href="/" className="group flex items-center gap-2">
@@ -99,11 +85,10 @@ export default function Navbar() {
             <li key={item.href}>
               <Link
                 href={item.href}
-                className={`relative inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold transition-all ${
-                  isActive(item.href)
-                    ? "bg-violet-500/10 text-violet-700 ring-1 ring-violet-500/20 dark:text-violet-200"
-                    : "text-foreground/70 hover:bg-violet-500/10 hover:text-foreground"
-                }`}
+                className={`relative inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold transition-all ${isActive(item.href)
+                  ? "bg-violet-500/10 text-violet-700 ring-1 ring-violet-500/20 dark:text-violet-200"
+                  : "text-foreground/70 hover:bg-violet-500/10 hover:text-foreground"
+                  }`}
               >
                 <item.icon className="h-4 w-4" />
                 {item.label}
@@ -135,7 +120,7 @@ export default function Navbar() {
               <button
                 type="button"
                 onClick={() => setDropdownOpen((v) => !v)}
-              className="flex cursor-pointer items-center gap-2 rounded-full bg-white/60 py-1 pl-1 pr-3 ring-1 ring-violet-500/15 backdrop-blur-xl transition hover:ring-violet-500/35 dark:bg-white/5"
+                className="flex cursor-pointer items-center gap-2 rounded-full bg-white/60 py-1 pl-1 pr-3 ring-1 ring-violet-500/15 backdrop-blur-xl transition hover:ring-violet-500/35 dark:bg-white/5"
                 title={session.user.name}
               >
                 <span className="grid h-8 w-8 place-items-center overflow-hidden rounded-full bg-gradient-to-br from-violet-500 via-fuchsia-500 to-cyan-400 text-white ring-2 ring-white/70 dark:ring-white/10">
@@ -225,9 +210,8 @@ export default function Navbar() {
       </nav>
 
       <div
-        className={`overflow-hidden border-t border-white/30 bg-background/85 backdrop-blur-xl transition-[max-height] duration-300 dark:border-white/10 lg:hidden ${
-          open ? "max-h-[600px]" : "max-h-0"
-        }`}
+        className={`overflow-hidden border-t border-white/30 bg-background/85 backdrop-blur-xl transition-[max-height] duration-300 dark:border-white/10 lg:hidden ${open ? "max-h-[600px]" : "max-h-0"
+          }`}
       >
         <div className="container-x space-y-2 pb-4">
           {allNav.map((item) => (
@@ -235,11 +219,10 @@ export default function Navbar() {
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className={`flex items-center gap-3 rounded-2xl px-4 py-3 font-semibold transition ${
-                isActive(item.href)
-                  ? "bg-violet-500/10 text-violet-700 ring-1 ring-violet-500/20 dark:text-violet-200"
-                  : "glass text-foreground"
-              }`}
+              className={`flex items-center gap-3 rounded-2xl px-4 py-3 font-semibold transition ${isActive(item.href)
+                ? "bg-violet-500/10 text-violet-700 ring-1 ring-violet-500/20 dark:text-violet-200"
+                : "glass text-foreground"
+                }`}
             >
               <item.icon className="h-5 w-5" />
               {item.label}
