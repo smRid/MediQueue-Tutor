@@ -14,11 +14,13 @@ export const SUBJECTS = [
   "Accounting",
 ];
 
+const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
 const initialValues = {
   tutorName: "",
   photo: "",
   subject: "Mathematics",
-  availableDays: "",
+  availableDays: [],
   availableTime: "",
   hourlyFee: "",
   totalSlot: "",
@@ -30,16 +32,36 @@ const initialValues = {
 };
 
 export default function TutorForm({ defaultValues, submitLabel = "Submit", onSubmit, loading }) {
-  const [form, setForm] = useState({ ...initialValues, ...defaultValues });
+  const [form, setForm] = useState(() => {
+    const initial = { ...initialValues, ...defaultValues };
+    if (typeof initial.availableDays === "string") {
+      initial.availableDays = initial.availableDays
+        ? initial.availableDays.split(",").map((d) => d.trim())
+        : [];
+    }
+    return initial;
+  });
 
   const update = (e) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const toggleDay = (day) => {
+    setForm((prev) => {
+      const days = prev.availableDays || [];
+      if (days.includes(day)) {
+        return { ...prev, availableDays: days.filter((d) => d !== day) };
+      }
+      return { ...prev, availableDays: [...days, day] };
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit({
       ...form,
+      // Pass availableDays as string or array based on backend needs, string is safer for simple DBs
+      availableDays: Array.isArray(form.availableDays) ? form.availableDays.join(", ") : form.availableDays,
       hourlyFee: Number(form.hourlyFee),
       totalSlot: Number(form.totalSlot),
     });
@@ -59,7 +81,35 @@ export default function TutorForm({ defaultValues, submitLabel = "Submit", onSub
         </select>
       </label>
 
-      <Field label="Available Days" name="availableDays" value={form.availableDays} onChange={update} placeholder="Sun - Thu" required />
+      <div className="block">
+        <span className="text-sm font-semibold mb-2 block">
+          Available Days <span className="text-red-500">*</span>
+        </span>
+        <div className="flex flex-wrap gap-2">
+          {DAYS.map((day) => {
+            const isSelected = form.availableDays.includes(day);
+            return (
+              <label
+                key={day}
+                className={`flex items-center gap-2 rounded-xl border px-3 py-2 cursor-pointer transition-colors ${
+                  isSelected
+                    ? "border-medi-400 bg-medi-50/50 text-medi-900 dark:bg-medi-900/20 dark:text-medi-100"
+                    : "border-border bg-background hover:bg-gray-50 dark:hover:bg-gray-800/50"
+                }`}
+              >
+                <input
+                  type="checkbox"
+                  className="w-4 h-4 rounded border-gray-300 text-medi-500 focus:ring-medi-400 cursor-pointer"
+                  checked={isSelected}
+                  onChange={() => toggleDay(day)}
+                />
+                <span className="text-sm font-medium">{day}</span>
+              </label>
+            );
+          })}
+        </div>
+      </div>
+
       <Field label="Available Time Slot" name="availableTime" value={form.availableTime} onChange={update} placeholder="5:00 PM - 8:00 PM" required />
       <Field label="Hourly Fee" name="hourlyFee" type="number" min="0" value={form.hourlyFee} onChange={update} required />
       <Field label="Total Slot" name="totalSlot" type="number" min="0" value={form.totalSlot} onChange={update} required />
