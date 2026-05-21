@@ -144,7 +144,7 @@ export default function Footer() {
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
                 placeholder="you@example.com"
-                className="h-10 w-full rounded-full border border-white/60 bg-white/70 px-4 text-sm outline-none transition focus:border-violet-400 dark:border-white/10 dark:bg-white/5"
+                className="h-10 w-full rounded-full border border-slate-300 bg-white/70 px-4 text-sm outline-none transition duration-200 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 dark:border-white/20 dark:bg-white/5 dark:focus:border-violet-400 dark:focus:ring-violet-400/20"
               />
               <button
                 type="submit"
