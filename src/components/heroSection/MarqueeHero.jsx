@@ -20,14 +20,18 @@ const ITEMS = [
 ];
 
 export default function MarqueeHero() {
-  const text = ITEMS.join("  ");
-
   return (
     <>
-      <span>{text}</span>
-      <span aria-hidden="true" className="ml-12">
-        {text}
-      </span>
+      <div className="flex items-center gap-12 pr-12">
+        {ITEMS.map((item, index) => (
+          <span key={`a-${index}`}>{item}</span>
+        ))}
+      </div>
+      <div className="flex items-center gap-12 pr-12" aria-hidden="true">
+        {ITEMS.map((item, index) => (
+          <span key={`b-${index}`}>{item}</span>
+        ))}
+      </div>
     </>
   );
 }

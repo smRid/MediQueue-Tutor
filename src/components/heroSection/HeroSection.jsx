@@ -141,8 +141,8 @@ export default function HeroSection() {
 
       <div className="border-y border-white/50 bg-white/50 backdrop-blur-xl 
       dark:border-white/10 dark:bg-white/5">
-        <div className="overflow-hidden">
-          <div className="marquee-track flex gap-12 whitespace-nowrap py-4 font-display text-2xl font-black gradient-text">
+        <div className="overflow-hidden flex">
+          <div className="marquee-track flex w-max whitespace-nowrap py-4 font-display text-2xl font-black gradient-text">
             <MarqueeHero />
           </div>
         </div>
