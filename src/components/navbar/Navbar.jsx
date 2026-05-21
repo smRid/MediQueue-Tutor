@@ -79,44 +79,42 @@ export default function Navbar() {
       }`}
     >
       <nav className="container-x flex h-16 items-center justify-between">
-        <div className="flex items-center gap-8">
-          <Link href="/" className="group flex items-center gap-2">
-            <span className="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-violet-600 via-fuchsia-500 to-cyan-400 shadow-lg shadow-violet-500/20 transition-transform duration-300 group-hover:scale-105">
-              <span className="grid h-9 w-9 place-items-center rounded-xl bg-white/15">
-                <BookOpen className="h-5 w-5 text-white" strokeWidth={2.6} />
-              </span>
+        <Link href="/" className="group flex items-center gap-2">
+          <span className="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-violet-600 via-fuchsia-500 to-cyan-400 shadow-lg shadow-violet-500/20 transition-transform duration-300 group-hover:scale-105">
+            <span className="grid h-9 w-9 place-items-center rounded-xl bg-white/15">
+              <BookOpen className="h-5 w-5 text-white" strokeWidth={2.6} />
             </span>
-            <span className="leading-tight">
-              <span className="block font-display text-xl font-extrabold tracking-tight text-foreground">
-                Medi<span className="gradient-text">Queue</span>
-              </span>
-              <span className="block text-[10px] uppercase tracking-[0.28em] text-violet-600 dark:text-violet-300">
-                Tutor Booking
-              </span>
+          </span>
+          <span className="leading-tight">
+            <span className="block font-display text-xl font-extrabold tracking-tight text-foreground">
+              Medi<span className="gradient-text">Queue</span>
             </span>
-          </Link>
+            <span className="block text-[10px] uppercase tracking-[0.28em] text-violet-600 dark:text-violet-300">
+              Tutor Booking
+            </span>
+          </span>
+        </Link>
 
-          <ul className="hidden items-center gap-1 lg:flex">
-            {allNav.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className={`group relative inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 ${
-                    isActive(item.href)
-                      ? "bg-violet-500/10 text-violet-700 shadow-sm shadow-violet-500/10 ring-1 ring-violet-500/20 dark:text-violet-200"
-                      : "text-foreground/70 hover:bg-violet-500/10 hover:text-foreground"
-                  }`}
-                >
-                  {isActive(item.href) && (
-                    <span className="absolute inset-0 -z-10 rounded-full bg-gradient-to-r from-violet-500/10 via-fuchsia-500/10 to-cyan-500/10" />
-                  )}
-                  <item.icon className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <ul className="hidden flex-1 justify-center items-center gap-1 lg:flex">
+          {allNav.map((item) => (
+            <li key={item.href}>
+              <Link
+                href={item.href}
+                className={`group relative inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 ${
+                  isActive(item.href)
+                    ? "bg-violet-500/10 text-violet-700 shadow-sm shadow-violet-500/10 ring-1 ring-violet-500/20 dark:text-violet-200"
+                    : "text-foreground/70 hover:bg-violet-500/10 hover:text-foreground"
+                }`}
+              >
+                {isActive(item.href) && (
+                  <span className="absolute inset-0 -z-10 rounded-full bg-gradient-to-r from-violet-500/10 via-fuchsia-500/10 to-cyan-500/10" />
+                )}
+                <item.icon className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
+                {item.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
 
         {/* Desktop Right */}
         <div className="hidden items-center gap-2 lg:flex">

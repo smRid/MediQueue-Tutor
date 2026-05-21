@@ -33,6 +33,7 @@ export const auth = betterAuth({
   trustedOrigins,
   emailAndPassword: {
     enabled: true,
+    autoSignIn: false,
   },
   account: {
     updateAccountOnSignIn: true,
