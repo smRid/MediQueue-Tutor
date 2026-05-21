@@ -177,6 +177,10 @@
   * {
     @apply border-border outline-ring/50;
   }
+
+  a, button, [role="button"] {
+    @apply cursor-pointer;
+  }
 }
 
 /* â”€â”€â”€â”€â”€â”€â”€â”€â”€ COMPONENTS â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
