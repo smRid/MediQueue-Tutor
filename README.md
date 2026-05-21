@@ -130,7 +130,6 @@ NEXT_PUBLIC_API_BASE_URL=http://localhost:5000
 # Better Auth
 BETTER_AUTH_SECRET=your_random_secret
 BETTER_AUTH_URL=http://localhost:3000
-BETTER_AUTH_API_KEY=your_better_auth_api_key
 
 # Google OAuth
 GOOGLE_CLIENT_ID=your_google_oauth_client_id
