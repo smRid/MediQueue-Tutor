@@ -171,18 +171,18 @@ export default function Navbar() {
                     className="fixed inset-0 z-40"
                     onClick={() => setDropdownOpen(false)}
                   />
-                  <div className="glass absolute right-0 top-12 z-50 w-56 overflow-hidden rounded-2xl p-1 shadow-xl">
+                  <div className="absolute right-0 top-14 z-50 w-56 origin-top-right overflow-hidden rounded-2xl border border-gray-200 bg-white p-1.5 shadow-2xl ring-1 ring-black/5 transition-all dark:border-gray-800 dark:bg-gray-900">
                     <Link
                       href="/my-profile"
                       onClick={() => setDropdownOpen(false)}
-                      className="flex items-center gap-2 rounded-xl px-3 py-2.5 text-sm font-medium text-foreground transition hover:bg-violet-500/10"
+                      className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white"
                     >
                       <User className="h-4 w-4" /> My Profile
                     </Link>
                     <button
                       type="button"
                       onClick={handleSignOut}
-                      className="flex w-full cursor-pointer items-center gap-2 rounded-xl px-3 py-2.5 text-sm font-medium text-red-600 transition hover:bg-red-500/10 dark:text-red-300"
+                      className="mt-1 flex w-full cursor-pointer items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-red-600 transition-colors hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-950/30"
                     >
                       <LogOut className="h-4 w-4" /> Logout
                     </button>
