@@ -45,8 +45,8 @@ export default function TutorsPage() {
           </p>
         </div>
 
-        <div className="glass grid gap-3 rounded-3xl p-4 sm:grid-cols-3 lg:min-w-[620px]">
-          <label className="relative sm:col-span-3 lg:col-span-1">
+        <div className="glass grid gap-3 rounded-3xl p-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:min-w-[620px]">
+          <label className="relative sm:col-span-2 lg:col-span-1">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-violet-500" />
             <input
               value={search}
@@ -55,8 +55,8 @@ export default function TutorsPage() {
               className="w-full rounded-full border border-white/60 bg-white/75 py-3 pl-10 pr-4 outline-none transition focus:border-violet-400 dark:border-white/10 dark:bg-white/5"
             />
           </label>
-          <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} className="rounded-full border border-white/60 bg-white/75 px-4 py-3 outline-none transition focus:border-violet-400 dark:border-white/10 dark:bg-white/5" />
-          <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} className="rounded-full border border-white/60 bg-white/75 px-4 py-3 outline-none transition focus:border-violet-400 dark:border-white/10 dark:bg-white/5" />
+          <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} className="w-full rounded-full border border-white/60 bg-white/75 px-4 py-3 outline-none transition focus:border-violet-400 dark:border-white/10 dark:bg-white/5" />
+          <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} className="w-full rounded-full border border-white/60 bg-white/75 px-4 py-3 outline-none transition focus:border-violet-400 dark:border-white/10 dark:bg-white/5" />
         </div>
       </div>
 
