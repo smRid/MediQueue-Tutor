@@ -74,7 +74,7 @@ export default function HeroSection() {
 
               <div className="container-x relative z-10 flex h-full items-center">
                 <div
-                  className="max-w-2xl text-white"
+                  className="max-w-2xl text-white pb-16 md:pb-0"
                   style={selected ? { animation: "rise-in 0.7s ease-out both" } : undefined}
                 >
                   <span className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-widest backdrop-blur-md">
@@ -82,15 +82,15 @@ export default function HeroSection() {
                     {item.eyebrow}
                   </span>
 
-                  <h1 className="mt-6 font-display text-4xl font-black leading-tight drop-shadow-lg sm:text-5xl lg:text-6xl">
+                  <h1 className="mt-4 md:mt-6 font-display text-4xl font-black leading-tight drop-shadow-lg sm:text-5xl lg:text-6xl">
                     {item.title}
                   </h1>
 
-                  <p className="mt-6 max-w-xl text-base leading-relaxed text-white/85 md:text-lg">
+                  <p className="mt-4 md:mt-6 max-w-xl text-base leading-relaxed text-white/85 md:text-lg">
                     {item.subtitle}
                   </p>
 
-                  <div className="mt-8 flex flex-wrap items-center gap-3">
+                  <div className="mt-6 md:mt-8 flex flex-wrap items-center gap-3">
                     <Link href={item.cta.href} className="btn-medi group px-7 py-3 text-base">
                       {item.cta.label}
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -104,7 +104,7 @@ export default function HeroSection() {
                     </Link>
                   </div>
 
-                  <div className="mt-10 flex flex-wrap items-center gap-4 text-sm text-white/80">
+                  <div className="mt-6 md:mt-10 flex flex-wrap items-center gap-4 text-sm text-white/80">
                     <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-2 backdrop-blur-md">
                       <Badge className="h-4 w-4 text-cyan-200" />
                       {item.badge.text}
@@ -120,7 +120,7 @@ export default function HeroSection() {
 
 
 
-        <div className="absolute bottom-20 left-1/2 z-20 flex -translate-x-1/2 items-center gap-3 rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur-md">
+        <div className="absolute bottom-6 md:bottom-12 lg:bottom-20 left-1/2 z-20 flex -translate-x-1/2 items-center gap-3 rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur-md">
           <div className="flex items-center gap-1.5">
             {SLIDES.map((_, i) => (
               <button
