@@ -153,7 +153,8 @@ export default function Footer() {
                 className="btn-medi h-10 w-10 shrink-0 !px-0 !py-0"
               >
                 {busy ? (
-                  <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" />
+                  <span className="h-4 w-4 animate-spin rounded-full border-2 
+                  border-white/40 border-t-white" />
                 ) : (
                   <ArrowRight className="h-4 w-4" />
                 )}
