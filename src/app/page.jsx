@@ -13,7 +13,6 @@ export default function HomePage() {
       <LearningTips />
       <WhyChooseUs />
       <HowItWorks />
-      <CtaBand />
     </>
   );
 }
