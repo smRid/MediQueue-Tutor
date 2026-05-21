@@ -115,7 +115,7 @@ function LoginInner() {
                 .
               </h2>
               <p className="mt-3 max-w-md text-white/90">
-                Pick up where you left off â€” browse tutors, manage bookings, and
+                Pick up where you left off, browse tutors, manage bookings, and
                 continue your journey to academic excellence.
               </p>
             </div>
