@@ -25,6 +25,19 @@ export default function Navbar() {
   const pathname = usePathname();
   const router = useRouter();
   const { data: session, isPending } = useSession();
+  const [cachedUser, setCachedUser] = useState(session?.user);
+
+  useEffect(() => {
+    if (session?.user) {
+      setCachedUser(session.user);
+    } else if (!isPending) {
+      setCachedUser(null);
+    }
+  }, [session?.user, isPending]);
+
+  const displayUser = session?.user || cachedUser;
+  const showSkeleton = isPending && !displayUser;
+
   const { theme, toggleTheme } = useTheme();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -50,7 +63,7 @@ export default function Navbar() {
     router.refresh();
   };
 
-  const allNav = session?.user
+  const allNav = displayUser
     ? [...PUBLIC_NAV, ...PRIVATE_NAV]
     : PUBLIC_NAV;
 
@@ -66,42 +79,44 @@ export default function Navbar() {
       }`}
     >
       <nav className="container-x flex h-16 items-center justify-between">
-        <Link href="/" className="group flex items-center gap-2">
-          <span className="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-violet-600 via-fuchsia-500 to-cyan-400 shadow-lg shadow-violet-500/20 transition-transform duration-300 group-hover:scale-105">
-            <span className="grid h-9 w-9 place-items-center rounded-xl bg-white/15">
-              <BookOpen className="h-5 w-5 text-white" strokeWidth={2.6} />
+        <div className="flex items-center gap-8">
+          <Link href="/" className="group flex items-center gap-2">
+            <span className="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-violet-600 via-fuchsia-500 to-cyan-400 shadow-lg shadow-violet-500/20 transition-transform duration-300 group-hover:scale-105">
+              <span className="grid h-9 w-9 place-items-center rounded-xl bg-white/15">
+                <BookOpen className="h-5 w-5 text-white" strokeWidth={2.6} />
+              </span>
             </span>
-          </span>
-          <span className="leading-tight">
-            <span className="block font-display text-xl font-extrabold tracking-tight text-foreground">
-              Medi<span className="gradient-text">Queue</span>
+            <span className="leading-tight">
+              <span className="block font-display text-xl font-extrabold tracking-tight text-foreground">
+                Medi<span className="gradient-text">Queue</span>
+              </span>
+              <span className="block text-[10px] uppercase tracking-[0.28em] text-violet-600 dark:text-violet-300">
+                Tutor Booking
+              </span>
             </span>
-            <span className="block text-[10px] uppercase tracking-[0.28em] text-violet-600 dark:text-violet-300">
-              Tutor Booking
-            </span>
-          </span>
-        </Link>
+          </Link>
 
-        <ul className="hidden items-center gap-1 lg:flex">
-          {allNav.map((item) => (
-            <li key={item.href}>
-              <Link
-                href={item.href}
-                className={`group relative inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 ${
-                  isActive(item.href)
-                    ? "bg-violet-500/10 text-violet-700 shadow-sm shadow-violet-500/10 ring-1 ring-violet-500/20 dark:text-violet-200"
-                    : "text-foreground/70 hover:bg-violet-500/10 hover:text-foreground"
-                }`}
-              >
-                {isActive(item.href) && (
-                  <span className="absolute inset-0 -z-10 rounded-full bg-gradient-to-r from-violet-500/10 via-fuchsia-500/10 to-cyan-500/10" />
-                )}
-                <item.icon className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
-                {item.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
+          <ul className="hidden items-center gap-1 lg:flex">
+            {allNav.map((item) => (
+              <li key={item.href}>
+                <Link
+                  href={item.href}
+                  className={`group relative inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 ${
+                    isActive(item.href)
+                      ? "bg-violet-500/10 text-violet-700 shadow-sm shadow-violet-500/10 ring-1 ring-violet-500/20 dark:text-violet-200"
+                      : "text-foreground/70 hover:bg-violet-500/10 hover:text-foreground"
+                  }`}
+                >
+                  {isActive(item.href) && (
+                    <span className="absolute inset-0 -z-10 rounded-full bg-gradient-to-r from-violet-500/10 via-fuchsia-500/10 to-cyan-500/10" />
+                  )}
+                  <item.icon className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
 
         {/* Desktop Right */}
         <div className="hidden items-center gap-2 lg:flex">
@@ -119,21 +134,21 @@ export default function Navbar() {
             )}
           </button>
 
-          {isPending ? (
+          {showSkeleton ? (
             <div className="h-10 w-24 animate-pulse rounded-full bg-medi-100/60 dark:bg-medi-900/30" />
-          ) : session?.user ? (
+          ) : displayUser ? (
             <div className="relative">
               <button
                 type="button"
                 onClick={() => setDropdownOpen((v) => !v)}
                 className="flex cursor-pointer items-center gap-2 rounded-full bg-white/60 py-1 pl-1 pr-3 ring-1 ring-violet-500/15 backdrop-blur-xl transition hover:ring-violet-500/35 dark:bg-white/5"
-                title={session.user.name}
+                title={displayUser.name}
               >
                 <span className="grid h-8 w-8 place-items-center overflow-hidden rounded-full bg-gradient-to-br from-violet-500 via-fuchsia-500 to-cyan-400 text-white ring-2 ring-white/70 dark:ring-white/10">
-                  {session.user.image ? (
+                  {displayUser.image ? (
                     <Image
-                      src={session.user.image}
-                      alt={session.user.name || "user"}
+                      src={displayUser.image}
+                      alt={displayUser.name || "user"}
                       width={32}
                       height={32}
                       unoptimized
@@ -141,12 +156,12 @@ export default function Navbar() {
                     />
                   ) : (
                     <span className="font-bold">
-                      {(session.user.name || "U").charAt(0).toUpperCase()}
+                      {(displayUser.name || "U").charAt(0).toUpperCase()}
                     </span>
                   )}
                 </span>
                 <span className="max-w-[120px] truncate text-sm font-semibold text-foreground">
-                  {session.user.name?.split(" ")[0] || "User"}
+                  {displayUser.name?.split(" ")[0] || "User"}
                 </span>
               </button>
 
@@ -239,7 +254,7 @@ export default function Navbar() {
             </Link>
           ))}
 
-          {session?.user ? (
+          {displayUser ? (
             <>
               <Link
                 href="/my-profile"
