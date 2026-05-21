@@ -9,6 +9,9 @@ export const metadata = {
   title: "MediQueue - Tutor Booking System",
   description:
     "Book expert tutors for online and offline learning sessions. Browse subjects, schedule classes, and manage your learning journey with MediQueue.",
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({ children }) {
