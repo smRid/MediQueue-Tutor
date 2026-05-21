@@ -1,16 +1,13 @@
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
+import DynamicTitle from "@/components/DynamicTitle";
 
 export const metadata = {
   title: "MediQueue - Tutor Booking System",
   description:
     "Book expert tutors for online and offline learning sessions. Browse subjects, schedule classes, and manage your learning journey with MediQueue.",
 };
-
-function DynamicTitle() {
-  return null;
-}
 
 export default function RootLayout({ children }) {
   return (
