@@ -2,6 +2,7 @@ import { Toaster } from "react-hot-toast";
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
 import DynamicTitle from "@/components/DynamicTitle";
+import Navbar from "@/components/navbar/Navbar";
 
 export const metadata = {
   title: "MediQueue - Tutor Booking System",
@@ -29,7 +30,7 @@ export default function RootLayout({ children }) {
             }}
           />
           <DynamicTitle />
-          <div id="navbar-slot" />
+          <Navbar />
           <main className="flex-1">{children}</main>
           <div id="footer-slot" />
         </ThemeProvider>
