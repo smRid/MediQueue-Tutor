@@ -1,6 +1,6 @@
 "use client";
 
-import { BookOpen, CalendarCheck, GraduationCap, Home, LogOut, Menu, Moon, PlusCircle, Sun, User, Users, X, } from "lucide-react";
+import { BookOpen, CalendarCheck, GraduationCap, Home, Info, LogOut, Menu, Moon, PlusCircle, Sun, User, Users, X, } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -12,6 +12,7 @@ import { useTheme } from "@/context/ThemeContext";
 const PUBLIC_NAV = [
   { href: "/", label: "Home", icon: Home },
   { href: "/tutors", label: "Tutors", icon: GraduationCap },
+  { href: "/about", label: "About", icon: Info },
 ];
 
 const PRIVATE_NAV = [
