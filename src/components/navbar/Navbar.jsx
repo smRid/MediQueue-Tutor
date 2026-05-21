@@ -58,10 +58,11 @@ export default function Navbar() {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 ${scrolled
-        ? "border-b border-white/40 bg-background/70 shadow-sm backdrop-blur-xl dark:border-white/10"
-        : "bg-transparent"
-        }`}
+      className={`sticky top-0 z-50 border-b transition-all duration-300 ${
+        scrolled
+          ? "border-white/40 bg-background/75 shadow-sm shadow-violet-500/5 backdrop-blur-xl dark:border-white/10"
+          : "border-transparent bg-background/45 backdrop-blur-md"
+      }`}
     >
       <nav className="container-x flex h-16 items-center justify-between">
         <Link href="/" className="group flex items-center gap-2">
@@ -85,12 +86,16 @@ export default function Navbar() {
             <li key={item.href}>
               <Link
                 href={item.href}
-                className={`relative inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold transition-all ${isActive(item.href)
-                  ? "bg-violet-500/10 text-violet-700 ring-1 ring-violet-500/20 dark:text-violet-200"
-                  : "text-foreground/70 hover:bg-violet-500/10 hover:text-foreground"
-                  }`}
+                className={`group relative inline-flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 ${
+                  isActive(item.href)
+                    ? "bg-violet-500/10 text-violet-700 shadow-sm shadow-violet-500/10 ring-1 ring-violet-500/20 dark:text-violet-200"
+                    : "text-foreground/70 hover:bg-violet-500/10 hover:text-foreground"
+                }`}
               >
-                <item.icon className="h-4 w-4" />
+                {isActive(item.href) && (
+                  <span className="absolute inset-0 -z-10 rounded-full bg-gradient-to-r from-violet-500/10 via-fuchsia-500/10 to-cyan-500/10" />
+                )}
+                <item.icon className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
                 {item.label}
               </Link>
             </li>
@@ -210,8 +215,11 @@ export default function Navbar() {
       </nav>
 
       <div
-        className={`overflow-hidden border-t border-white/30 bg-background/85 backdrop-blur-xl transition-[max-height] duration-300 dark:border-white/10 lg:hidden ${open ? "max-h-[600px]" : "max-h-0"
-          }`}
+        className={`overflow-hidden border-t border-white/30 bg-background/85 backdrop-blur-xl transition-all duration-300 ease-out dark:border-white/10 lg:hidden ${
+          open
+            ? "max-h-[600px] translate-y-0 opacity-100"
+            : "max-h-0 -translate-y-2 opacity-0"
+        }`}
       >
         <div className="container-x space-y-2 pb-4">
           {allNav.map((item) => (
@@ -219,10 +227,11 @@ export default function Navbar() {
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className={`flex items-center gap-3 rounded-2xl px-4 py-3 font-semibold transition ${isActive(item.href)
-                ? "bg-violet-500/10 text-violet-700 ring-1 ring-violet-500/20 dark:text-violet-200"
-                : "glass text-foreground"
-                }`}
+              className={`flex items-center gap-3 rounded-2xl px-4 py-3 font-semibold transition-all duration-300 ${
+                isActive(item.href)
+                  ? "bg-violet-500/10 text-violet-700 shadow-sm shadow-violet-500/10 ring-1 ring-violet-500/20 dark:text-violet-200"
+                  : "glass text-foreground hover:-translate-y-0.5"
+              }`}
             >
               <item.icon className="h-5 w-5" />
               {item.label}
