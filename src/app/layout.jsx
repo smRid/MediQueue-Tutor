@@ -2,6 +2,7 @@ import { Toaster } from "react-hot-toast";
 import "./globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
 import DynamicTitle from "@/components/DynamicTitle";
+import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbar/Navbar";
 
 export const metadata = {
@@ -32,7 +33,7 @@ export default function RootLayout({ children }) {
           <DynamicTitle />
           <Navbar />
           <main className="flex-1">{children}</main>
-          <div id="footer-slot" />
+          <Footer />
         </ThemeProvider>
       </body>
     </html>
