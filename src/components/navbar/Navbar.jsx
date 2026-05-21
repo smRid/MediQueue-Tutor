@@ -118,7 +118,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={toggleTheme}
-            className="grid h-10 w-10 cursor-pointer place-items-center rounded-full text-foreground/70 transition hover:bg-violet-500/10 hover:text-violet-600"
+            className="grid h-10 w-10 cursor-pointer place-items-center rounded-full bg-white/60 text-foreground/70 ring-1 ring-violet-500/15 backdrop-blur-xl transition hover:bg-violet-500/10 hover:text-violet-600 hover:ring-violet-500/35 dark:bg-white/5"
             aria-label="Toggle theme"
           >
             {theme === "dark" ? (
