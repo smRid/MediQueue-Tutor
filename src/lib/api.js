@@ -4,7 +4,7 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:5
 
 export async function getSessionToken() {
   const res = await fetch("/api/session-token", { cache: "no-store" });
-  if (!res.ok) throw new Error("Please sign in again to continue.");
+  if (!res.ok) throw new Error("Please sign in to continue.");
   const data = await res.json();
   return data.token;
 }
