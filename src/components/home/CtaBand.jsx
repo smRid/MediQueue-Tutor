@@ -12,7 +12,7 @@ export default function CtaBand() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.25 }}
         transition={{ duration: 0.6 }}
-        className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] p-10 text-white shadow-2xl shadow-violet-500/20 md:p-14"
+        className="relative isolate z-0 mx-auto max-w-7xl overflow-hidden rounded-[2rem] p-10 text-white shadow-2xl shadow-violet-500/20 md:p-14"
       >
         {/* Animated gradient base */}
         <div
