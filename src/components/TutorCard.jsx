@@ -3,7 +3,6 @@ import Link from "next/link";
 import {
   ArrowRight,
   Clock,
-  DollarSign,
   MapPin,
   Monitor,
   Sparkles,
@@ -106,25 +105,24 @@ export default function TutorCard({ tutor }) {
           )}
         </div>
 
-        <div className="mt-auto flex items-center justify-between border-t border-border/70 pt-4">
-          <div>
-            <p className="text-[11px] uppercase tracking-wider text-muted-foreground">
-              From
-            </p>
-            <div className="gradient-text flex items-center gap-1 font-display text-2xl font-extrabold">
-              <DollarSign className="h-4 w-4" />
+        <div className="mt-auto pt-5">
+          <div className="mb-4 h-px w-full bg-border/40 dark:bg-white/10" />
+          <div className="flex items-center justify-between">
+            <div className="gradient-text flex items-end gap-1 font-display text-2xl font-extrabold leading-none">
               {tutor.hourlyFee || 0}
-              <span className="text-xs font-normal text-muted-foreground">/hr</span>
+              <span className="pb-0.5 text-xs font-normal text-muted-foreground">
+                /hr
+              </span>
             </div>
-          </div>
 
-          <Link
-            href={`/tutors/${tutor._id}`}
-            className="inline-flex items-center gap-1.5 rounded-full border border-violet-500/30 bg-violet-500/5 px-4 py-2 text-sm font-semibold text-violet-700 transition-all hover:gap-2.5 hover:border-violet-500/60 hover:bg-violet-500/10 dark:text-violet-200"
-          >
-            Book
-            <ArrowRight className="h-4 w-4" />
-          </Link>
+            <Link
+              href={`/tutors/${tutor._id}`}
+              className="inline-flex items-center gap-1.5 rounded-full border border-violet-500/30 bg-violet-500/5 px-4 py-2 text-sm font-semibold text-violet-700 transition-all hover:gap-2.5 hover:border-violet-500/60 hover:bg-violet-500/10 dark:text-violet-200"
+            >
+              Book
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
         </div>
       </div>
     </article>
