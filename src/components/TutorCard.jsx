@@ -110,6 +110,7 @@ export default function TutorCard({ tutor }) {
           <div className="flex items-center justify-between">
             <div className="gradient-text flex items-end gap-1 font-display text-2xl font-extrabold leading-none">
               {tutor.hourlyFee || 0}
+              <span className="pb-0.5 text-sm font-bold">$</span>
               <span className="pb-0.5 text-xs font-normal text-muted-foreground">
                 /hr
               </span>
