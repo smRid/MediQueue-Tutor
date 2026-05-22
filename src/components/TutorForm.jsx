@@ -83,7 +83,7 @@ export default function TutorForm({ defaultValues, submitLabel = "Submit", onSub
 
       <div className="block">
         <span className="text-sm font-semibold mb-2 block">
-          Available Days <span className="text-red-500">*</span>
+          Available Days
         </span>
         <div className="flex flex-wrap gap-2">
           {DAYS.map((day) => {
@@ -91,11 +91,10 @@ export default function TutorForm({ defaultValues, submitLabel = "Submit", onSub
             return (
               <label
                 key={day}
-                className={`flex items-center gap-2 rounded-xl border px-3 py-2 cursor-pointer transition-colors ${
-                  isSelected
+                className={`flex items-center gap-2 rounded-xl border px-3 py-2 cursor-pointer transition-colors ${isSelected
                     ? "border-medi-400 bg-medi-50/50 text-medi-900 dark:bg-medi-900/20 dark:text-medi-100"
                     : "border-border bg-background hover:bg-gray-50 dark:hover:bg-gray-800/50"
-                }`}
+                  }`}
               >
                 <input
                   type="checkbox"
