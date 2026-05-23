@@ -1,6 +1,6 @@
 <div align="center">
 
-# ✨ MediQueue Tutor
+# MediQueue Tutor
 
 ### The Premium Platform for Academic Excellence
 
